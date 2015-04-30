@@ -49,7 +49,7 @@
   <button>Submit</button>
 <% end %>
 
-<% Review.where(place_id: @place.id).order('id desc').each do |review| %>
+<% @reviews.each do |review| %>
   <p>
     <strong><%= ("&#9733;" * review.rating).html_safe  %></strong>
     <%= review.desc %>

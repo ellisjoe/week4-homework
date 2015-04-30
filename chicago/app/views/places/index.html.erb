@@ -13,7 +13,7 @@
     <li>
       <%= link_to place.title, places_show_url(place.id) %>
       (<%= number_to_currency(place.price / 100) %>)
-      <%= link_to "(delete)", places_delete_url(place.id), :method => 'delete' %>
+      <%= link_to "(delete)", places_destroy_url(place.id), :method => 'delete' %>
     </li>
   <% end %>
 

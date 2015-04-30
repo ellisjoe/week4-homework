@@ -1,18 +1,16 @@
 Rails.application.routes.draw do
 
-  root 'places#index'
+  root  'places#index'
 
-  get '/places/new' => 'places#new'
-  post '/places' => 'places#submitted'
-
-  get '/places' => 'places#index', :as => "index"
-  get '/places/:id' => 'places#show', :as => "places_show"
-
+  get '/places/new'      => 'places#new',  :as => "places_new"
   get '/places/:id/edit' => 'places#edit', :as => "places_edit"
-  patch '/places/:id' => 'places#update', :as => "places_update"
 
-  delete '/places/:id' => 'places#delete', :as => "places_delete"
+  get    '/places'     => 'places#index',   :as => "index"
+  post   '/places'     => 'places#create',  :as => "places_create"
+  get    '/places/:id' => 'places#show',    :as => "places_show"
+  patch  '/places/:id' => 'places#update',  :as => "places_update"
+  delete '/places/:id' => 'places#destroy', :as => "places_destroy"
 
-  post '/reviews/:place_id/submit_new'  => 'reviews#create', :as => "reviews_create"
+  post '/reviews/:place_id'  => 'reviews#create', :as => "reviews_create"
 
 end

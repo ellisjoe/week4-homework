@@ -2,14 +2,17 @@ Rails.application.routes.draw do
 
   root 'places#index'
 
-  get '/places' => 'places#index'
   get '/places/new' => 'places#new'
-  get '/places/submit_new' => 'places#submitted'
-  get '/places/:id' => 'places#show'
-  get '/places/:id/delete' => 'places#delete'
-  get '/places/:id/edit' => 'places#edit'
-  get '/places/:id/submit_edit' => 'places#update'
+  post '/places' => 'places#submitted'
 
-  get '/reviews/:place_id/submit_new'  => 'reviews#create'
+  get '/places' => 'places#index', :as => "index"
+  get '/places/:id' => 'places#show', :as => "places_show"
+
+  get '/places/:id/edit' => 'places#edit', :as => "places_edit"
+  patch '/places/:id' => 'places#update', :as => "places_update"
+
+  delete '/places/:id' => 'places#delete', :as => "places_delete"
+
+  post '/reviews/:place_id/submit_new'  => 'reviews#create', :as => "reviews_create"
 
 end
